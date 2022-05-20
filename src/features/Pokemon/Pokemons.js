@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { pokemons } from "./pokemon-info";
 
 export const Pokemon = () => {
-  const [pokemon, setPokemon] = useState("bulbasaur");
+  const [pokemon, setPokemon] = useState(pokemons.bulbasaur);
   return (
     <>
       <div className="font-display flex flex-wrap items-center justify-around">
@@ -26,8 +26,8 @@ export const Pokemon = () => {
       </div>
 
       <div className="font-sans pokemons-info block bg-gray-800 text-white rounded-lg drop-shadow-2xl">
-        <div className="p-4 flex items-center justify-center">
-          <img src={pokemon.image} alt={pokemon.name}></img>
+        <div className="pt-2 flex items-center justify-center">
+          <img src={pokemon.image} className="w-[10rem]" alt={pokemon.name}></img>
         </div>
 
         <div className="p-4 flex items-center justify-center">
@@ -40,9 +40,17 @@ export const Pokemon = () => {
           <div> {pokemon.order}</div>
         </div>
 
-        <div className="p-4 flex items-center justify-center">
-          <div className="font-bold pr-1 ">Moves: </div>
-          <div> {pokemon.moves}</div>
+        <div className="flex items-center justify-center">
+          <div className="p-4 items-center justify-center text-center ">
+            <div className="font-bold pr-1 ">Moves: </div>
+            {pokemon.moves.map((key) => {
+              return (
+                <div key={key} className="block">
+                  <div className="block pb-2">{key}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
